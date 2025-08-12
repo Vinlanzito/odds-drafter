@@ -5009,8 +5009,8 @@ updateAdpButton.addEventListener('click', updateADP);
 updateTiersButton.addEventListener('click', updateTierValues);
 updatePointsButton.addEventListener('click', updatePointValues);
 window.addEventListener('beforeunload', function (event) {
-    //event.preventDefault(); 
-    //event.returnValue = 'Are you sure you want to leave? Changes may not be saved.';
+    event.preventDefault(); 
+    event.returnValue = 'Are you sure you want to leave? Changes may not be saved.';
 });
 
 updateFantasyPoints();
