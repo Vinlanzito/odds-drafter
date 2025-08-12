@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <title>FFW</title>
+  </head>
+  <body>
+    <div id="header">
+        <button id="rankings-button">Rankings</button>
+        <button id="settings-button">Settings</button>
+    </div>
+    <div id="rankings-body">
+      <div id="table-filters">
+        <button id="all-button" class="current-position">All</button>
+        <button id="qb-button">QB</button>
+        <button id="rb-button">RB</button>
+        <button id="wr-button">WR</button>
+        <button id="te-button">TE</button>
+        <button id="top-5-button">Top 5</button>
+        <button id="top-10-button">Top 10</button>
+        <label class="switch">
+          <input id="toggle-drafted" type="checkbox">
+          <span class="slider"></span>
+        </label>
+        <p id="hide-drafted">Hide drafted</p>
+      </div>
+      <table>
+          <thead>
+              <th id="rank-header">Rank</th>
+              <th id="name-header">Name</th>
+              <th id="value-header">Value</th>
+              <th id="tier-header">Tier</th>
+              <th id="adp-header">ADP</th>
+              <th id="bye-header">Bye</th>
+              <th id="injury-header">Injury</th>
+              <th id="scarcity-header">Scarcity</th>
+          </thead>
+          <tbody id="table-body">     
+          </tbody>
+      </table>
+    </div>
+    <div id="settings-body" class="hide">
+      <div id="settings-container">
+        <div id="replacement-container">
+          <p class="settings-header">Replacement Levels</p>
+          <div id="replacement-level-inputs">
+            <div class="replacement-level-position">
+              <p>QB</p>
+              <input type="number" min="0" id="qb-replacement-input">
+            </div>
+            <div class="replacement-level-position">
+              <p>RB</p>
+              <input type="number" id="rb-replacement-input">
+            </div>
+            <div class="replacement-level-position">
+              <p>WR</p>
+              <input type="number" id="wr-replacement-input">
+            </div>
+            <div class="replacement-level-position">
+              <p>TE</p>
+              <input type="number" id="te-replacement-input">
+            </div>
+            <div class="replacement-level-position">
+              <p>Flex</p>
+              <input type="number" id="flex-replacement-input">
+            </div>
+          </div>
+          <p id="replacement-warning" class="hide">All values must be 1 or greater.</p>
+          <button id="update-replacement-button" class="update-button">Update</button>
+        </div>
+        <div id="adp-container">
+          <p class="settings-header">Average Draft Position</p>
+          <form id="adp-form">
+            <label>
+              <input type="radio" name="adp" value="average" checked> Average ADP
+            </label>
+            <label>
+              <input type="radio" name="adp" value="sleeper"> Sleeper ADP
+            </label>
+            <label>
+              <input type="radio" name="adp" value="espn"> ESPN ADP
+            </label>
+            <label>
+              <input type="radio" name="adp" value="yahoo"> Yahoo ADP
+            </label>
+            <label>
+              <input type="radio" name="adp" value="nfl"> NFL ADP
+            </label>
+            <label>
+              <input type="radio" name="adp" value="ffCheatsheet"> FF Cheatsheet ADP
+            </label>
+          </form>
+          <button id="update-adp-button" class="update-button">Update</button>
+        </div>
+        <div id="tier-container">
+          <p class="settings-header">Tier Values</p>
+          <div id="tier-value-inputs">
+            <div class="tier-values">
+              <p>Tier 1</p>
+              <input type="number" step="0.1" id="tier-1-input">
+            </div>
+            <div class="tier-values">
+              <p>Tier 2</p>
+              <input type="number" step="0.1" id="tier-2-input">
+            </div>
+            <div class="tier-values">
+              <p>Tier 3</p>
+              <input type="number" step="0.1" id="tier-3-input">
+            </div>
+            <div class="tier-values">
+              <p>Tier 4</p>
+              <input type="number" step="0.1" id="tier-4-input">
+            </div>
+            <div class="tier-values">
+              <p>Tier 5</p>
+              <input type="number" step="0.1" id="tier-5-input">
+            </div>
+            <div class="tier-values">
+              <p>Tier 6</p>
+              <input type="number" step="0.1" id="tier-6-input">
+            </div>
+            <div class="tier-values">
+              <p>Tier 7</p>
+              <input type="number" step="0.1" id="tier-7-input">
+            </div>
+          </div>
+          <button id="update-tiers-button" class="update-button">Update</button>
+        </div>
+        <div id="points-container">
+          <p class="settings-header">Point Values</p>
+          <div id="point-value-inputs">
+            <div class="point-values">
+              <p>Passing yards</p>
+              <input type="number" step="0.01" id="passing-yards-input">
+            </div>
+            <div class="point-values">
+              <p>Passing touchdowns</p>
+              <input type="number" id="passing-touchdowns-input">
+            </div>
+            <div class="point-values">
+              <p>Interceptions</p>
+              <input type="number" id="interceptions-input">
+            </div>
+            <div class="point-values">
+              <p>Rushing yards</p>
+              <input type="number" step="0.1" id="rushing-yards-input">
+            </div>
+            <div class="point-values">
+              <p>Receiving yards</p>
+              <input type="number" step="0.1" id="receiving-yards-input">
+            </div>
+            <div class="point-values">
+              <p>Touchdowns</p>
+              <input type="number" id="touchdowns-input">
+            </div>
+            <div class="point-values">
+              <p>Receptions</p>
+              <input type="number" step="0.5" id="receptions-input">
+            </div>
+            <div class="point-values">
+              <p>Fumbles</p>
+              <input type="number" id="fumbles-input">
+            </div>
+            <div class="point-values">
+              <p>Sacks</p>
+              <input type="number" step="0.25" id="sacks-input">
+            </div>
+          </div>
+          <button id="update-points-button" class="update-button">Update</button>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
