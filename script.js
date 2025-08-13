@@ -5025,3 +5025,4 @@ let currentPlayers = [...allPlayers];
 renderPlayers();
 
 setSettingsInputs();
+
