@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <title>FFW</title>
+    <link rel="icon" type="image/png" href="images/odds-icon.png">
+    <title>Odds Drafter</title>
   </head>
   <body>
     <div id="header">
@@ -27,7 +28,7 @@
           <input id="toggle-drafted" type="checkbox">
           <span class="slider"></span>
         </label>
-        <p id="hide-drafted">Hide drafted</p>
+        <label for="toggle-drafted" id="hide-drafted">Hide drafted</label>
       </div>
       <table>
           <thead>
@@ -50,23 +51,23 @@
           <p class="settings-header">Replacement Levels</p>
           <div id="replacement-level-inputs">
             <div class="replacement-level-position">
-              <p>QB</p>
+              <label for="qb-replacement-input">QB</label>
               <input type="number" min="0" id="qb-replacement-input">
             </div>
             <div class="replacement-level-position">
-              <p>RB</p>
+              <label for="rb-replacement-input">RB</label>
               <input type="number" id="rb-replacement-input">
             </div>
             <div class="replacement-level-position">
-              <p>WR</p>
+              <label for="wr-replacement-input">WR</label>
               <input type="number" id="wr-replacement-input">
             </div>
             <div class="replacement-level-position">
-              <p>TE</p>
+              <label for="te-replacement-input">TE</label>
               <input type="number" id="te-replacement-input">
             </div>
             <div class="replacement-level-position">
-              <p>Flex</p>
+              <label for="flex-replacement-input">Flex</label>
               <input type="number" id="flex-replacement-input">
             </div>
           </div>
@@ -101,31 +102,31 @@
           <p class="settings-header">Tier Values</p>
           <div id="tier-value-inputs">
             <div class="tier-values">
-              <p>Tier 1</p>
+              <label for="tier-1-input">Tier 1</label>
               <input type="number" step="0.1" id="tier-1-input">
             </div>
             <div class="tier-values">
-              <p>Tier 2</p>
+              <label for="tier-2-input">Tier 2</label>
               <input type="number" step="0.1" id="tier-2-input">
             </div>
             <div class="tier-values">
-              <p>Tier 3</p>
+              <label for="tier-3-input">Tier 3</label>
               <input type="number" step="0.1" id="tier-3-input">
             </div>
             <div class="tier-values">
-              <p>Tier 4</p>
+              <label for="tier-4-input">Tier 4</label>
               <input type="number" step="0.1" id="tier-4-input">
             </div>
             <div class="tier-values">
-              <p>Tier 5</p>
+              <label for="tier-5-input">Tier 5</label>
               <input type="number" step="0.1" id="tier-5-input">
             </div>
             <div class="tier-values">
-              <p>Tier 6</p>
+              <label for="tier-6-input">Tier 6</label>
               <input type="number" step="0.1" id="tier-6-input">
             </div>
             <div class="tier-values">
-              <p>Tier 7</p>
+              <label for="tier-7-input">Tier 7</label>
               <input type="number" step="0.1" id="tier-7-input">
             </div>
           </div>
@@ -135,39 +136,39 @@
           <p class="settings-header">Point Values</p>
           <div id="point-value-inputs">
             <div class="point-values">
-              <p>Passing yards</p>
+              <label for="passing-yards-input">Passing yards</label>
               <input type="number" step="0.01" id="passing-yards-input">
             </div>
             <div class="point-values">
-              <p>Passing touchdowns</p>
+              <label for="passing-touchdowns-input">Passing touchdowns</label>
               <input type="number" id="passing-touchdowns-input">
             </div>
             <div class="point-values">
-              <p>Interceptions</p>
+              <label for="interceptions-input">Interceptions</label>
               <input type="number" id="interceptions-input">
             </div>
             <div class="point-values">
-              <p>Rushing yards</p>
+              <label for="rushing-yards-input">Rushing yards</label>
               <input type="number" step="0.1" id="rushing-yards-input">
             </div>
             <div class="point-values">
-              <p>Receiving yards</p>
+              <label for="receiving-yards-input">Receiving yards</label>
               <input type="number" step="0.1" id="receiving-yards-input">
             </div>
             <div class="point-values">
-              <p>Touchdowns</p>
+              <label for="touchdowns-input">Touchdowns</label>
               <input type="number" id="touchdowns-input">
             </div>
             <div class="point-values">
-              <p>Receptions</p>
+              <label for="receptions-input">Receptions</label>
               <input type="number" step="0.5" id="receptions-input">
             </div>
             <div class="point-values">
-              <p>Fumbles</p>
+              <label for="fumbles-input">Fumbles</label>
               <input type="number" id="fumbles-input">
             </div>
             <div class="point-values">
-              <p>Sacks</p>
+              <label for="sacks-input">Sacks</label>
               <input type="number" step="0.25" id="sacks-input">
             </div>
           </div>
