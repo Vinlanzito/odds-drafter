@@ -61,10 +61,10 @@ tr:hover {
     top: 0;
     left: 0;
     right: 0;
-    background-color: #00D1FF;
+    background-color: #00d1ff;
     display: flex;
     z-index: 100;
-    border-bottom: 1px ridge white;
+    border-bottom: 1px ridge #ffffff;
 }
 
 #header button {
@@ -75,18 +75,19 @@ tr:hover {
     font-size: 20px;
     transition: 0.25s;
     border: none;
-    background-color: #00D1FF;
+    background-color: #00d1ff;
     font-family: 'Oswald', 'Arial';
 }
 
 #header button:hover {
-    background-color: #00AAD2;
+    background-color: #00aad2;
     cursor: pointer;
 }
 
 #table-filters {
     display: flex;
-    margin-top: 70px;
+    margin-top: 82px;
+    margin-bottom: 12px;
     align-items: center;
     justify-content: left;
     width: 60%;
@@ -97,7 +98,7 @@ tr:hover {
 
 #table-filters button {
     font-family: 'Oswald', 'Arial';
-    background-color: white;
+    background-color: #ffffff;
     border: none;
     font-size: 16px;
     border-radius: 40px;
@@ -106,13 +107,13 @@ tr:hover {
 }
 
 #table-filters button:hover {
-    background-color: #D2D2D2;
+    background-color: #d2d2d2;
     cursor: pointer;
 }
 
 #table-filters .current-position {
     font-weight: 800;
-    color: #1A1A40;
+    color: #1a1a40;
 }
 
 #value-header:hover, #adp-header:hover, #scarcity-header:hover {
@@ -121,11 +122,11 @@ tr:hover {
 }
 
 .clicked-row {
-    background-color: #00E8C3;
+    background-color: #00e8c3;
 }
 
 .clicked-row:hover {
-    background-color: #00E8C3;
+    background-color: #00e8c3;
 }
 
 .draft-button {
@@ -138,12 +139,12 @@ tr:hover {
     font-size: 16px;
     transition: 0.15s;
     border: none;
-    background-color: #00DBF5;
+    background-color: #00dbf5;
     font-family: 'Oswald', 'Arial';
 }
 
 .draft-button:hover {
-    background-color: #00B4C8;
+    background-color: #00b4c8;
     cursor: pointer;
 }
 
@@ -182,7 +183,7 @@ tr:hover {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #CCCCCC;
+    background-color: #cccccc;
     transition: 0.3s;
     border-radius: 25px;
 }
@@ -194,7 +195,7 @@ tr:hover {
     width: 16px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: #ffffff;
     transition: 0.3s;
     border-radius: 50%;
 }
@@ -246,19 +247,20 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: space-between;
     width: 115px;
-    margin-bottom: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .replacement-level-position input {
     padding: 6px 8px;
     border-radius: 3px;
     font-size: 18px;
-    border: solid 2px black;
+    border: solid 2px #000000;
     font-family: 'Oswald', 'Arial';
     width: 50px;
 }
 
-.replacement-level-position p {
+.replacement-level-position label {
     font-size: 20px;
     font-family: 'Oswald', 'Arial';
 }
@@ -270,12 +272,12 @@ input:checked + .slider:before {
     font-size: 22px;
     transition: 0.2s;
     border: none;
-    background-color: #00DBF5;
+    background-color: #00dbf5;
     font-family: 'Oswald', 'Arial';
 }
 
 .update-button:hover {
-    background-color: #00B4C8;
+    background-color: #00b4c8;
     cursor: pointer;
 }
 
@@ -286,7 +288,7 @@ input:checked + .slider:before {
 
 #replacement-warning {
     margin: 0;
-    color: #D0342c;
+    color: #d0342c;
     font-size: 16px;
     font-family: 'Oswald', 'Arial';
 }
@@ -332,19 +334,19 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: space-between;
     width: 130px;
-    margin-bottom: 0px;
+    margin-bottom: 15px;
 }
 
 .tier-values input {
     padding: 6px 8px;
     border-radius: 3px;
     font-size: 18px;
-    border: solid 2px black;
+    border: solid 2px #000000;
     font-family: 'Oswald', 'Arial';
     width: 50px;
 }
 
-.tier-values p {
+.tier-values label {
     font-size: 20px;
     font-family: 'Oswald', 'Arial';
 }
@@ -370,19 +372,19 @@ input:checked + .slider:before {
     align-items: center;
     justify-content: space-between;
     width: 230px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
 }
 
 .point-values input {
     padding: 6px 8px;
     border-radius: 3px;
     font-size: 18px;
-    border: solid 2px black;
+    border: solid 2px #000000;
     font-family: 'Oswald', 'Arial';
     width: 50px;
 }
 
-.point-values p {
+.point-values label {
     font-size: 20px;
     font-family: 'Oswald', 'Arial';
 }
