@@ -4544,7 +4544,7 @@ function renderPlayers() {
             ${player.rank}
             <button class="draft-button hide">${player.drafted ?"Undraft" : "Draft"}</button>
         </td>
-        <td><div class="player-line"><img src="images/${getImageName(player.name)}.png"><span>${player.name}</span> (${player.team}) &#x2022; ${player.position}</div></td>
+        <td><div class="player-line"><img src="images/${getImageName(player.name)}.png" alt=""><span>${player.name}</span> (${player.team}) &#x2022; ${player.position}</div></td>
         <td>${player.value}</td>
         <td>${player.tier}</td>
         <td>${player.adp}</td>
