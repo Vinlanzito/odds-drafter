@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css?v=1.2.0" />
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -14,6 +15,7 @@
     <div id="header">
         <button id="rankings-button">Rankings</button>
         <button id="settings-button">Settings</button>
+        <button id="spreadsheets-button">Spreadsheets</button>
     </div>
     <div id="rankings-body">
       <div id="table-filters">
@@ -29,8 +31,13 @@
           <span class="slider"></span>
         </label>
         <label for="toggle-drafted" id="hide-drafted">Hide drafted</label>
+        <label class="switch">
+          <input id="toggle-draft-mode" type="checkbox">
+          <span class="slider"></span>
+        </label>
+        <label for="toggle-draft-mode" id="draft-mode">Draft Mode</label>
       </div>
-      <table>
+      <table id="main-table">
           <thead>
               <th id="rank-header">Rank</th>
               <th id="name-header">Name</th>
@@ -175,6 +182,39 @@
           <button id="update-points-button" class="update-button">Update</button>
         </div>
       </div>
+    </div>
+    <div id="spreadsheets-body" class="hide">
+      <div id="spreadsheets-container">
+        <p class="download-header">Excel Sheets</p>
+        <button id="download-sheet-button" class="download-button">Download cheatsheet</button>
+        <button id="download-data-button" class="download-button">Download cheatsheet with stats</button>
+      </div>
+      <table id="data-table" class="hide">
+          <thead>
+              <th id="data-rank-header">Rank</th>
+              <th id="data-team-header">Team</th>
+              <th id="data-name-header">Name</th>
+              <th id="data-position-header">Position</th>
+              <th id="data-value-header">Value</th>
+              <th id="data-tier-header">Tier</th>
+              <th id="data-adp-header">ADP</th>
+              <th id="data-bye-header">Bye</th>
+              <th id="data-injury-header">Injury</th>
+              <th id="data-scarcity-header">Scarcity</th>
+              <th id="data-points-header">Pts</th>
+              <th id="data-passing-yards-header">Passing Yds</th>
+              <th id="data-passing-touchdowns-header">Passing TDs</th>
+              <th id="data-interceptions-header">Int</th>
+              <th id="data-rushing-yards-header">Rushing Yds</th>
+              <th id="data-receiving-yards-header">Receiving Yds</th>
+              <th id="data-touchdowns-header">TDs</th>
+              <th id="data-receptions-header">Rec</th>
+              <th id="data-fumbles-header">Fmb</th>
+              <th id="data-sacks-header">Sk</th>
+          </thead>
+          <tbody id="data-table-body">     
+          </tbody>
+      </table>
     </div>
     <script src="./script.js?v=1.2.0"></script>
   </body>
