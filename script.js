@@ -10,10 +10,13 @@ const valueHeader = document.getElementById('value-header');
 const adpHeader = document.getElementById('adp-header');
 const scarcityHeader = document.getElementById('scarcity-header');
 const toggleDrafted = document.getElementById('toggle-drafted');
+const toggleDraftMode = document.getElementById('toggle-draft-mode');
 const rankingsButton = document.getElementById('rankings-button');
 const settingsButton = document.getElementById('settings-button');
+const spreadsheetsButton = document.getElementById('spreadsheets-button');
 const rankingsBody = document.getElementById('rankings-body');
 const settingsBody = document.getElementById('settings-body');
+const spreadsheetsBody = document.getElementById('spreadsheets-body');
 const qbReplacementInput = document.getElementById('qb-replacement-input');
 const rbReplacementInput = document.getElementById('rb-replacement-input');
 const wrReplacementInput = document.getElementById('wr-replacement-input');
@@ -40,6 +43,9 @@ const replacementWarning = document.getElementById('replacement-warning');
 const updateAdpButton = document.getElementById('update-adp-button');
 const updateTiersButton = document.getElementById('update-tiers-button');
 const updatePointsButton = document.getElementById('update-points-button');
+const downloadSheetButton = document.getElementById('download-sheet-button');
+const downloadDataButton = document.getElementById('download-data-button');
+const dataTableBody = document.getElementById('data-table-body');
 
 let currentPositionButton = allButton;
 let currentBody = rankingsBody;
@@ -66,6 +72,7 @@ let receptionValue = 1;
 let fumbleValue = -2;
 let sackValue = 0;
 let hideDraftedPlayers = false;
+let draftMode = false;
 
 const allPlayers = [
     {
@@ -4542,7 +4549,7 @@ function renderPlayers() {
       <tr class="${player.tier % 2 === 0 ? 'even-tier ' : ""}${player.drafted ? 'drafted ' : ""}${(hideDraftedPlayers && player.drafted) || (player.fantasyScore === 0) ? 'hide' : ""}">
         <td>
             ${player.rank}
-            <button class="draft-button hide">${player.drafted ?"Undraft" : "Draft"}</button>
+            <button class="draft-button hide"></button>
         </td>
         <td><div class="player-line"><img src="images/${getImageName(player.name)}.png?v=2" alt=""><span>${player.name}</span> (${player.team}) &#x2022; ${player.position}</div></td>
         <td>${player.value}</td>
@@ -4805,6 +4812,7 @@ function updateBye() {
 function highlightRow(row) {
     if(row === clickedRow) {
         clickedRow.classList.remove("clicked-row");
+        clickedRow.querySelector("td").querySelector("button").innerText = "";
         clickedRow.querySelector("td").querySelector("button").classList.add("hide");
         clickedRow = null;
         return;
@@ -4815,12 +4823,13 @@ function highlightRow(row) {
     row.classList.add("clicked-row");
     clickedRow = row;
 
+    clickedRow.querySelector("td").querySelector("button").innerText = (clickedRow.classList.contains("drafted")) ? "Undraft" : "Draft";
     row.querySelector("td").querySelector("button").classList.remove("hide");
 }
 
 function draftPlayer() {
     clickedRow.classList.add("drafted");
-    clickedRow.querySelector("td").querySelector("button").innerText = "Undraft";
+    clickedRow.querySelector("td").querySelector("button").innerText = "";
     clickedRow.querySelector("td").querySelector("button").removeEventListener("click", draftPlayer);
     clickedRow.querySelector("td").querySelector("button").addEventListener("click", undraftPlayer);
     currentPlayers.find(player => player.rank === parseInt(clickedRow.querySelector("td").innerText)).drafted = true;
@@ -4837,7 +4846,7 @@ function draftPlayer() {
 
 function undraftPlayer() {
     clickedRow.classList.remove("drafted");
-    clickedRow.querySelector("td").querySelector("button").innerText = "Draft";
+    clickedRow.querySelector("td").querySelector("button").innerText = "";
     clickedRow.querySelector("td").querySelector("button").removeEventListener("click", undraftPlayer);
     clickedRow.querySelector("td").querySelector("button").addEventListener("click", draftPlayer);
     currentPlayers.find(player => player.rank === parseInt(clickedRow.querySelector("td").innerText)).drafted = false;
@@ -4991,6 +5000,37 @@ function updatePointValues() {
     renderPlayers();
 }
 
+function renderDataTable() {
+    const playersHTML = allPlayers.map((player) => {
+    return `        
+      <tr>
+        <td>${player.rank}</td>
+        <td>${player.team}</td>
+        <td>${player.name}</td>
+        <td>${player.position}</td>
+        <td>${player.value}</td>
+        <td>${player.tier}</td>
+        <td>${player.adp}</td>
+        <td>${player.bye}</td>
+        <td>${player.injury}</td>
+        <td>${player.scarcity}</td>
+        <td>${player.fantasyScore}</td>
+        <td>${player.passingYards}</td>
+        <td>${player.passingTouchdowns}</td>
+        <td>${player.interceptions}</td>
+        <td>${player.rushingYards}</td>
+        <td>${player.receivingYards}</td>
+        <td>${player.touchdowns}</td>
+        <td>${player.receptions}</td>
+        <td>${player.fumbles}</td>
+        <td>${player.sacks}</td>
+    </tr>
+    `
+  }).join("");
+
+  dataTableBody.innerHTML = playersHTML;
+}
+
 allButton.addEventListener('click', () => positionClick('all'));
 rbButton.addEventListener('click', () => positionClick('rb'));
 wrButton.addEventListener('click', () => positionClick('wr'));
@@ -5002,15 +5042,33 @@ valueHeader.addEventListener('click', sortByValue);
 adpHeader.addEventListener('click', sortByADP);
 scarcityHeader.addEventListener('click', sortByScarcity);
 toggleDrafted.addEventListener('change', () => toggleDrafted.checked ? hideDrafted() : showDrafted());
+toggleDraftMode.addEventListener('change', () => draftMode = !draftMode);
 rankingsButton.addEventListener('click', () => updateBody(rankingsBody));
 settingsButton.addEventListener('click', () => updateBody(settingsBody));
+spreadsheetsButton.addEventListener('click', () => updateBody(spreadsheetsBody));
 updateReplacementButton.addEventListener('click', updateReplacementValues);
 updateAdpButton.addEventListener('click', updateADP);
 updateTiersButton.addEventListener('click', updateTierValues);
 updatePointsButton.addEventListener('click', updatePointValues);
+downloadSheetButton.addEventListener('click', function() {
+    positionClick('all');
+    /* Create worksheet from HTML DOM TABLE */
+    var wb = XLSX.utils.table_to_book(document.getElementById("main-table"));
+    /* Export to file (start a download) */
+    XLSX.writeFile(wb, "SheetJSTable.xlsx");
+});
+downloadDataButton.addEventListener('click', function() {
+    renderDataTable();
+    /* Create worksheet from HTML DOM TABLE */
+    var wb = XLSX.utils.table_to_book(document.getElementById("data-table"));
+    /* Export to file (start a download) */
+    XLSX.writeFile(wb, "SheetJSTable.xlsx");
+});
 window.addEventListener('beforeunload', function (event) {
-    event.preventDefault(); 
-    event.returnValue = 'Are you sure you want to leave? Changes may not be saved.';
+    if(draftMode) {
+        event.preventDefault(); 
+        event.returnValue = 'Are you sure you want to leave? Changes may not be saved.';
+    }
 });
 
 updateFantasyPoints();
